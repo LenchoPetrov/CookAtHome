@@ -1,0 +1,27 @@
+C:\Users\Lencho\Desktop\Project Web 3\CookAtHome\CookAtHome.Data\bin\Debug\netstandard2.1\CookAtHome.Data.deps.json
+C:\Users\Lencho\Desktop\Project Web 3\CookAtHome\CookAtHome.Data\bin\Debug\netstandard2.1\CookAtHome.Data.dll
+C:\Users\Lencho\Desktop\Project Web 3\CookAtHome\CookAtHome.Data\bin\Debug\netstandard2.1\CookAtHome.Data.pdb
+C:\Users\Lencho\Desktop\Project Web 3\CookAtHome\CookAtHome.Data\obj\Debug\netstandard2.1\CookAtHome.Data.csprojAssemblyReference.cache
+C:\Users\Lencho\Desktop\Project Web 3\CookAtHome\CookAtHome.Data\obj\Debug\netstandard2.1\CookAtHome.Data.AssemblyInfoInputs.cache
+C:\Users\Lencho\Desktop\Project Web 3\CookAtHome\CookAtHome.Data\obj\Debug\netstandard2.1\CookAtHome.Data.AssemblyInfo.cs
+C:\Users\Lencho\Desktop\Project Web 3\CookAtHome\CookAtHome.Data\obj\Debug\netstandard2.1\CookAtHome.Data.csproj.CoreCompileInputs.cache
+C:\Users\Lencho\Desktop\Project Web 3\CookAtHome\CookAtHome.Data\obj\Debug\netstandard2.1\CookAtHome.Data.dll
+C:\Users\Lencho\Desktop\Project Web 3\CookAtHome\CookAtHome.Data\obj\Debug\netstandard2.1\CookAtHome.Data.pdb
+C:\Users\Lencho\Desktop\CookAtHome\CookAtHome.Data\bin\Debug\netstandard2.1\CookAtHome.Data.deps.json
+C:\Users\Lencho\Desktop\CookAtHome\CookAtHome.Data\bin\Debug\netstandard2.1\CookAtHome.Data.dll
+C:\Users\Lencho\Desktop\CookAtHome\CookAtHome.Data\bin\Debug\netstandard2.1\CookAtHome.Data.pdb
+C:\Users\Lencho\Desktop\CookAtHome\CookAtHome.Data\obj\Debug\netstandard2.1\CookAtHome.Data.csprojAssemblyReference.cache
+C:\Users\Lencho\Desktop\CookAtHome\CookAtHome.Data\obj\Debug\netstandard2.1\CookAtHome.Data.AssemblyInfoInputs.cache
+C:\Users\Lencho\Desktop\CookAtHome\CookAtHome.Data\obj\Debug\netstandard2.1\CookAtHome.Data.AssemblyInfo.cs
+C:\Users\Lencho\Desktop\CookAtHome\CookAtHome.Data\obj\Debug\netstandard2.1\CookAtHome.Data.csproj.CoreCompileInputs.cache
+C:\Users\Lencho\Desktop\CookAtHome\CookAtHome.Data\obj\Debug\netstandard2.1\CookAtHome.Data.dll
+C:\Users\Lencho\Desktop\CookAtHome\CookAtHome.Data\obj\Debug\netstandard2.1\CookAtHome.Data.pdb
+C:\Users\Lencho\Desktop\CookAtHome - Copy (3)\CookAtHome.Data\bin\Debug\netstandard2.1\CookAtHome.Data.deps.json
+C:\Users\Lencho\Desktop\CookAtHome - Copy (3)\CookAtHome.Data\bin\Debug\netstandard2.1\CookAtHome.Data.dll
+C:\Users\Lencho\Desktop\CookAtHome - Copy (3)\CookAtHome.Data\bin\Debug\netstandard2.1\CookAtHome.Data.pdb
+C:\Users\Lencho\Desktop\CookAtHome - Copy (3)\CookAtHome.Data\obj\Debug\netstandard2.1\CookAtHome.Data.csprojAssemblyReference.cache
+C:\Users\Lencho\Desktop\CookAtHome - Copy (3)\CookAtHome.Data\obj\Debug\netstandard2.1\CookAtHome.Data.AssemblyInfoInputs.cache
+C:\Users\Lencho\Desktop\CookAtHome - Copy (3)\CookAtHome.Data\obj\Debug\netstandard2.1\CookAtHome.Data.AssemblyInfo.cs
+C:\Users\Lencho\Desktop\CookAtHome - Copy (3)\CookAtHome.Data\obj\Debug\netstandard2.1\CookAtHome.Data.csproj.CoreCompileInputs.cache
+C:\Users\Lencho\Desktop\CookAtHome - Copy (3)\CookAtHome.Data\obj\Debug\netstandard2.1\CookAtHome.Data.dll
+C:\Users\Lencho\Desktop\CookAtHome - Copy (3)\CookAtHome.Data\obj\Debug\netstandard2.1\CookAtHome.Data.pdb
