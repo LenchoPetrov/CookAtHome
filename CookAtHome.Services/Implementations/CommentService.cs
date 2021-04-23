@@ -76,20 +76,13 @@ namespace CookAtHome.Services.Implementations
 
         public bool CheckCommentDeletePermision(string userId, int commentId)
         {
-            try
+            var comment = this.db.Comments.First(c => c.Id == commentId);
+            var recipe = this.db.Recipes.First(r => r.Id == comment.RecipeId);
+            if (comment.OwnerId == userId || recipe.OwnerId == userId)
             {
-                var comment = this.db.Comments.First(c => c.Id == commentId);
-                var recipe = this.db.Recipes.First(r => r.Id == comment.RecipeId);
-                if (comment.OwnerId == userId || recipe.OwnerId == userId)
-                {
-                    return true;
-                }
-                return false;
+                return true;
             }
-            catch (Exception)
-            {
-                return false;
-            }
+            return false;
         }
 
         public HashSet<CommentByUser> GetCommentsByUser(string username)

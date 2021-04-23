@@ -67,23 +67,16 @@ namespace CookAtHome.Services.Implementations
 
         public int EditRecipe(EditRecipe model, string userId)
         {
-            try
-            {
-                var user = this.db.Users.FirstOrDefault(u => u.Id == userId);
-                var recipe = this.db.Recipes.FirstOrDefault(r => r.Id == model.Id);
-                recipe.Content = model.Content;
-                recipe.Time = model.Time;
-                recipe.Title = model.Title;
+            var user = this.db.Users.FirstOrDefault(u => u.Id == userId);
+            var recipe = this.db.Recipes.FirstOrDefault(r => r.Id == model.Id);
+            recipe.Content = model.Content;
+            recipe.Time = model.Time;
+            recipe.Title = model.Title;
 
-                this.db.Update(recipe);
-                this.db.SaveChanges();
+            this.db.Update(recipe);
+            this.db.SaveChanges();
 
-                return 1;
-            }
-            catch (Exception)
-            {
-                return -1;
-            }
+            return 1;
         }
 
         public int DeleteRecipe(int id)

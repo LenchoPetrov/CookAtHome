@@ -31,14 +31,20 @@ namespace CookAtHome.WebAPIServices.Controllers
         /// </summary>
         /// <remarks>Search for recipe by id</remarks>
         /// <response code="200">Found recipe!</response>
-        /// <response code="400">Can't find recipe!</response>
-        /// <response code="500">Oops! Can't process your search right now.</response>
+        /// <response code="404">Can't find recipe!</response>
         [Authorize]
         [HttpGet, Route("api/recipes/{id}")]
         public IActionResult Index(int id)
         {
-            var recipe = recipes.GetRecipeInfoApi(id);
-            return Ok(recipe);
+            try
+            {
+                var recipe = recipes.GetRecipeInfoApi(id);
+                return Ok(recipe);
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(404, "Can't find recipe!");
+            }
         }
 
         /// <summary>
@@ -51,8 +57,17 @@ namespace CookAtHome.WebAPIServices.Controllers
         [HttpGet, Route("api/recipes/category/{category}")]
         public IActionResult Category(string category)
         {
-            var recipesByCategory = recipes.GetAllRecipesShortInCategory(category);
-            return Ok(recipesByCategory);
+            try
+            {
+                var recipesByCategory = recipes.GetAllRecipesShortInCategory(category);
+                if (recipesByCategory.Count > 0)
+                    return Ok(recipesByCategory);
+                return StatusCode(404, "No recipes found!");
+            }
+            catch (System.Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
 
         /// <summary>
@@ -65,8 +80,17 @@ namespace CookAtHome.WebAPIServices.Controllers
         [HttpGet, Route("api/recipes/myrecipes/{username}")]
         public IActionResult MyRecipes(string username)
         {
-            var recipesByUser = recipes.GetAllRecipesShortByUser(username);
-            return Ok(recipesByUser);
+            try
+            {
+                var recipesByUser = recipes.GetAllRecipesShortByUser(username);
+                if (recipesByUser.Count > 0)
+                    return Ok(recipesByUser);
+                return StatusCode(404, "No recipes found!");
+            }
+            catch (System.Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
 
         /// <summary>
@@ -82,8 +106,14 @@ namespace CookAtHome.WebAPIServices.Controllers
         {
             var fileContents = model.Photo.ToByteArray();
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            //TODO
-            return StatusCode(201, "Recipe is created with id: " + recipes.CreateRecipe(model, fileContents, userId));
+            try
+            {
+                return StatusCode(201, "Recipe is created with id: " + recipes.CreateRecipe(model, fileContents, userId));
+            }
+            catch (System.Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
 
         /// <summary>
@@ -96,14 +126,20 @@ namespace CookAtHome.WebAPIServices.Controllers
         [HttpPost, Route("api/recipes/edit/{id}")]
         public IActionResult Edit(int id, [FromBody] RecipeEdit model)
         {
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var result = 0;
-            if (recipes.UserIsOwner(id, userId))
-                result = recipes.EditRecipe(model, userId, id);
-            if (result == 1)
-                return Ok(result);
-
-            return StatusCode(500);
+            try
+            {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var result = 0;
+                if (recipes.UserIsOwner(id, userId))
+                    result = recipes.EditRecipe(model, userId, id);
+                if (result == 1)
+                    return Ok(result);
+                return StatusCode(400, "Recipe has missing/invalid values!");
+            }
+            catch (System.Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
 
         /// <summary>
@@ -122,7 +158,7 @@ namespace CookAtHome.WebAPIServices.Controllers
             if (result == 1)
                 return Ok(result);
 
-            return StatusCode(500);
+            return StatusCode(500, "Can't delete your recipe right now!");
         }
     }
 }

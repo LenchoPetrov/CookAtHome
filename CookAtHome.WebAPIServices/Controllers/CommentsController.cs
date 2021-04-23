@@ -50,17 +50,26 @@ namespace CookAtHome.WebAPIServices.Controllers
         /// This method create comment!
         /// </summary>
         /// <remarks>Create comment</remarks>
-        /// <response code="200">Comment created!</response>
-        /// <response code="401">Comment has missing/invalid values!</response>
+        /// <response code="201">Comment created!</response>
+        /// <response code="400">Comment has missing/invalid values!</response>
+        /// <response code="401">"Invalid credentials!"</response>
         /// <response code="500">Oops! Can't create your comment right now.</response>
         [HttpPost, Route("api/comments/create")]
         public IActionResult Create(int recipeId, string commentContent)
         {
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var comment = comments.CreateComment(recipeId, commentContent, userId);
-            if (comment == 1)
-                return StatusCode(201, "Comment created!");
-            return StatusCode(500);
+            try
+            {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var comment = comments.CreateComment(recipeId, commentContent, userId);
+                if (comment == 1)
+                    return StatusCode(201, "Comment created!");
+                else
+                    return StatusCode(400, "Comment has missing/invalid values!");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
 
         /// <summary>
@@ -68,18 +77,27 @@ namespace CookAtHome.WebAPIServices.Controllers
         /// </summary>
         /// <remarks>Delete comment</remarks>
         /// <response code="200">Comment deleted!</response>
+        /// <response code="401">Unathorized credentials!</response>
+        /// <response code="403">User can't perform this action!</response>
         /// <response code="500">Oops! Can't delete comment right now.</response>
         [HttpDelete, Route("api/comments/delete/{id}")]
         public IActionResult Delete(int id)
         {
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (comments.CheckCommentDeletePermision(userId, id))
+            try
             {
-                var result = comments.DeleteComment(id);
-                if (result==1)
-                  return Ok("Comment is deleted!");
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (comments.CheckCommentDeletePermision(userId, id))
+                {
+                    var commentCreated = comments.DeleteComment(id);
+                    if (commentCreated == 1)
+                        return Ok("Comment is deleted!");
+                }
+                return StatusCode(403, "User can't perform this action!");
             }
-            return StatusCode(500);
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
     }
 }

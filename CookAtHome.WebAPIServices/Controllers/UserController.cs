@@ -31,6 +31,8 @@ namespace CookAtHome.WebAPIServices.Controllers
         /// <summary>
         /// This methods return current user!
         /// </summary>
+        /// <response code="200">There is login user!</response>
+        /// <response code="404">No user logged in!</response>
         [HttpGet, Route("api/users/getcurrent")]
         public IActionResult GetCurrent()
         {
@@ -38,13 +40,16 @@ namespace CookAtHome.WebAPIServices.Controllers
             if (userId != null)
                 return Ok("Current login user is: " + this.User.Identity.Name);
 
-            return StatusCode(500, "No user logged in!");
+            return StatusCode(404, "No user logged in!");
         }
 
         /// <summary>
         /// This method is for login!
         /// </summary>
         /// <remarks>Login</remarks>
+        /// <response code="200">Login successful!</response>
+        /// <response code="400">Invalid syntax!</response>
+        /// <response code="401">Invalid login attempt!</response>
         [HttpPost, Route("api/user/login")]
         public async Task<IActionResult> Login(LoginUser user)
         {
@@ -54,17 +59,18 @@ namespace CookAtHome.WebAPIServices.Controllers
 
                 if (result.Succeeded)
                 {
-                    return Ok(user);
-                    //return RedirectToAction("Index", "Home");
+                    return Ok("Login is successful! User: " + user.Email);
                 }
-                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+                return StatusCode(401, "Invalid login attempt!");
             }
-            return NotFound();
+            return StatusCode(400, "Invalid syntax!");
         }
 
         /// <summary>
         /// This method is for logout!
         /// </summary>
+        /// <response code="200">Logout successful!</response>
+        /// <response code="500">No user logged in yet!</response>
         [HttpPost, Route("api/user/logout")]
         public async Task<IActionResult> Logout()
         {
@@ -81,6 +87,9 @@ namespace CookAtHome.WebAPIServices.Controllers
         /// This method is for registration!
         /// </summary>
         /// <remarks>Register user</remarks>
+        /// <response code="200">Registation is successful!</response>
+        /// <response code="400">Invalid syntax!</response>
+        /// <response code="500">Invalid registration attempt!</response>
         [HttpPost, Route("api/user/register")]
         public async Task<IActionResult> Register(RegisterUser model)
         {
@@ -98,7 +107,7 @@ namespace CookAtHome.WebAPIServices.Controllers
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return Ok(model);
                 }
-                return StatusCode(500, "Invalid registration attempt");
+                return StatusCode(400, "Invalid syntax");
             }
             return StatusCode(500, "Invalid registration attempt");
         }

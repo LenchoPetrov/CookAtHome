@@ -34,3 +34,15 @@ C:\Users\Lencho\Desktop\CookAtHome - Copy (3)\CookAtHome.Services\obj\Debug\nets
 C:\Users\Lencho\Desktop\CookAtHome - Copy (3)\CookAtHome.Services\obj\Debug\netstandard2.1\CookAtHome.Services.csproj.CopyComplete
 C:\Users\Lencho\Desktop\CookAtHome - Copy (3)\CookAtHome.Services\obj\Debug\netstandard2.1\CookAtHome.Services.dll
 C:\Users\Lencho\Desktop\CookAtHome - Copy (3)\CookAtHome.Services\obj\Debug\netstandard2.1\CookAtHome.Services.pdb
+C:\Users\Lencho\Desktop\WebApi - Copy\CookAtHome\CookAtHome.Services\bin\Debug\netstandard2.1\CookAtHome.Services.deps.json
+C:\Users\Lencho\Desktop\WebApi - Copy\CookAtHome\CookAtHome.Services\bin\Debug\netstandard2.1\CookAtHome.Services.dll
+C:\Users\Lencho\Desktop\WebApi - Copy\CookAtHome\CookAtHome.Services\bin\Debug\netstandard2.1\CookAtHome.Services.pdb
+C:\Users\Lencho\Desktop\WebApi - Copy\CookAtHome\CookAtHome.Services\bin\Debug\netstandard2.1\CookAtHome.Data.dll
+C:\Users\Lencho\Desktop\WebApi - Copy\CookAtHome\CookAtHome.Services\bin\Debug\netstandard2.1\CookAtHome.Data.pdb
+C:\Users\Lencho\Desktop\WebApi - Copy\CookAtHome\CookAtHome.Services\obj\Debug\netstandard2.1\CookAtHome.Services.csprojAssemblyReference.cache
+C:\Users\Lencho\Desktop\WebApi - Copy\CookAtHome\CookAtHome.Services\obj\Debug\netstandard2.1\CookAtHome.Services.AssemblyInfoInputs.cache
+C:\Users\Lencho\Desktop\WebApi - Copy\CookAtHome\CookAtHome.Services\obj\Debug\netstandard2.1\CookAtHome.Services.AssemblyInfo.cs
+C:\Users\Lencho\Desktop\WebApi - Copy\CookAtHome\CookAtHome.Services\obj\Debug\netstandard2.1\CookAtHome.Services.csproj.CoreCompileInputs.cache
+C:\Users\Lencho\Desktop\WebApi - Copy\CookAtHome\CookAtHome.Services\obj\Debug\netstandard2.1\CookAtHome.Services.csproj.CopyComplete
+C:\Users\Lencho\Desktop\WebApi - Copy\CookAtHome\CookAtHome.Services\obj\Debug\netstandard2.1\CookAtHome.Services.dll
+C:\Users\Lencho\Desktop\WebApi - Copy\CookAtHome\CookAtHome.Services\obj\Debug\netstandard2.1\CookAtHome.Services.pdb

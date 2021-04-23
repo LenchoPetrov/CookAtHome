@@ -26,17 +26,22 @@ namespace CookAtHome.WebAPIServices.Controllers
         /// </summary>
         /// <remarks>Get all tags!</remarks>
         /// <response code="200">Found tags!</response>
-        /// <response code="400">Can't find tags!</response>
+        /// <response code="404">Can't find tags!</response>
         /// <response code="500">Oops! Can't process your search right now.</response>
         [HttpGet, Route("api/tags/all")]
         public IActionResult All()
         {
-            var tagsList = tags.GetAll();
-            if (tagsList == null)
+            try
             {
-                return NotFound();
+                var tagsList = tags.GetAll();
+                if (tagsList == null)
+                    return StatusCode(404, "Can't find tags!");
+                return Ok(tagsList);
             }
-            return Ok(tagsList);
+            catch (System.Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
 
         /// <summary>
@@ -44,17 +49,22 @@ namespace CookAtHome.WebAPIServices.Controllers
         /// </summary>
         /// <remarks>Search tags!</remarks>
         /// <response code="200">Found tags!</response>
-        /// <response code="400">Can't find tags!</response>
+        /// <response code="404">Can't find tags!</response>
         /// <response code="500">Oops! Can't process your search right now.</response>
         [HttpGet, Route("api/tags/search/{text}")]
         public IActionResult Search(string text)
         {
-            var tagsList = tags.GetSearchedTags(text);
-            if (tagsList == null)
+            try
             {
-                return NotFound();
+                var tagsList = tags.GetSearchedTags(text);
+                if (tagsList == null)
+                    return StatusCode(404, "Can't find tags!"); ;
+                return Ok(tagsList);
             }
-            return Ok(tagsList);
+            catch (System.Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
     }
 }
