@@ -32,7 +32,6 @@ namespace CookAtHome.WebAPIServices.Controllers
         /// <remarks>Search for recipe by id</remarks>
         /// <response code="200">Found recipe!</response>
         /// <response code="404">Can't find recipe!</response>
-        [Authorize]
         [HttpGet, Route("api/recipes/{id}")]
         public IActionResult Index(int id)
         {
@@ -77,6 +76,7 @@ namespace CookAtHome.WebAPIServices.Controllers
         /// <response code="200">Found recipes!</response>
         /// <response code="400">Can't find recipes!</response>
         /// <response code="500">Oops! Can't process your search right now.</response>
+        [Authorize]
         [HttpGet, Route("api/recipes/myrecipes/{username}")]
         public IActionResult MyRecipes(string username)
         {
@@ -100,7 +100,6 @@ namespace CookAtHome.WebAPIServices.Controllers
         /// <response code="201">Recipe created!</response>
         /// <response code="400">Recipe has missing/invalid values!</response>
         /// <response code="500">Oops! Can't create your recipe right now.</response>
-        [Authorize]
         [HttpPost, Route("api/recipes/create")]
         public IActionResult Create(RecipeCreateShort model)
         {
@@ -131,10 +130,14 @@ namespace CookAtHome.WebAPIServices.Controllers
                 var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 var result = 0;
                 if (recipes.UserIsOwner(id, userId))
+                {
                     result = recipes.EditRecipe(model, userId, id);
-                if (result == 1)
-                    return Ok(result);
-                return StatusCode(400, "Recipe has missing/invalid values!");
+                    if (result == 1)
+                        return Ok("Recipe is edited!");
+                    return StatusCode(400, "Recipe has missing/invalid values!");
+                }
+                return StatusCode(401, "Invalid credentials!");
+
             }
             catch (System.Exception e)
             {

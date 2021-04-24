@@ -33,7 +33,7 @@ namespace CookAtHome.WebAPIServices.Controllers
         /// </summary>
         /// <response code="200">There is login user!</response>
         /// <response code="404">No user logged in!</response>
-        [HttpGet, Route("api/users/getcurrent")]
+        [HttpGet, Route("api/user/getcurrent")]
         public IActionResult GetCurrent()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -105,7 +105,7 @@ namespace CookAtHome.WebAPIServices.Controllers
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return Ok(model);
+                    return Ok("User: " + model.Email + " is registered!");
                 }
                 return StatusCode(400, "Invalid syntax");
             }
